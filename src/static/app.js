@@ -20,12 +20,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const spotsLeft = details.max_participants - details.participants.length;
 
+        // Participants section
+        let participantsHTML = "";
+        if (details.participants.length > 0) {
+          participantsHTML = `
+            <div class="participants-section">
+              <strong>Participants:</strong>
+              <ul class="participants-list">
+                ${details.participants.map(email => `<li>${email}</li>`).join("")}
+              </ul>
+            </div>
+          `;
+        } else {
+          participantsHTML = `
+            <div class="participants-section">
+              <strong>Participants:</strong>
+              <span class="no-participants">No one has signed up yet.</span>
+            </div>
+          `;
+        }
+
         activityCard.innerHTML = `
           <h4>${name}</h4>
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          ${participantsHTML}
         `;
+
+        // Add some basic styling for participants section
+        activityCard.querySelector(".participants-section").style.marginTop = "0.5em";
+        const participantsList = activityCard.querySelector(".participants-list");
+        if (participantsList) {
+          participantsList.style.margin = "0.25em 0 0 1em";
+          participantsList.style.paddingLeft = "1em";
+        }
+        const noParticipants = activityCard.querySelector(".no-participants");
+        if (noParticipants) {
+          noParticipants.style.color = "#888";
+          noParticipants.style.fontStyle = "italic";
+        }
 
         activitiesList.appendChild(activityCard);
 
