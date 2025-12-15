@@ -100,13 +100,32 @@ section h3 {
   color: #888;
   font-style: italic;
   margin-left: 4px;
+
+.participants-list {
+  margin: 6px 0 0 18px;
+  padding-left: 18px;
+  list-style: none;
+  color: #333;
+  font-size: 15px;
 }
 
-.form-group {
-  margin-bottom: 15px;
+.participant-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.2em;
 }
 
-.form-group label {
+.delete-participant {
+  cursor: pointer;
+  color: #c00;
+  margin-left: 0.5em;
+  font-size: 1em;
+  transition: color 0.2s;
+}
+.delete-participant:hover {
+  color: #f33;
+}
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
